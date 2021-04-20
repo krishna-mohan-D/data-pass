@@ -7,7 +7,7 @@ const { Meta } = Card;
 
 
 export default function Product(props) {
-    console.log("data" , props.data.id)
+    // console.log("data" , props.data.id)
     return (
         <div>
                 <Row>

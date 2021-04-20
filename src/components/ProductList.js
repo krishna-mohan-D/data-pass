@@ -7,7 +7,7 @@ export default function ProductList() {
     const Data = async () => { 
         
         const Result =  await axios.get("http://fakestoreapi.com/products")
-        console.log('df',Result.data)
+        // console.log('df',Result.data)
          setData( Result.data)
     }
     useEffect(()=> {

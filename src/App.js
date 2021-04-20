@@ -11,7 +11,7 @@ function App() {
 
            <Switch>
                <Route path ='/'  exact component={ProductList}/>
-              <Route path="/products/productId" component={ProductDetail}/>
+              <Route path='/products/:productId' component={ProductDetail}/>
            </Switch>
 
         </BrowserRouter>

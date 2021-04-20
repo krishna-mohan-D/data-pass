@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Card } from 'antd';
 import { Row, Col } from 'antd';
 import axios from 'axios';
@@ -8,32 +8,45 @@ const { Meta } = Card;
 
 export default function ProductDetail() {
     let {productId}   = useParams()
-    console.log('par',productId)
+    const [data, setData] = useState([]);
+    // console.log('par',productId)
     const Data  = async () => {
-               const  Result = await axios.get(`http://fakestoreapi.com/products/${productId}`) .catch((err) => {
+               const  Result = await axios.get(`http://fakestoreapi.com/products/${productId}`) 
+               .catch((err) => {
                 console.log("Err: ", err);
               }); 
-                console.log('result',Result) 
+            setData(Result.data)
+                // console.log('result',Result.data) 
     }
 
     useEffect(() => {
         Data();
-        // console.log('result') 
 
     } , [])
     return (
-        <div>
-             <Row>
-                <Col span={12}>  <Card
-    hoverable
-    style={{ width: 240 }}
-    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-     >
-    <Meta title="Europe Street beat" description="www.instagram.com" />
-     </Card></Col>
-                <Col span={12}>  </Col>
-            </Row>
-           
-        </div>
+
+               <div style={{margin: '40px',}}>
+                           {data.length === 0 ? '': 
+                           
+                           <Row>
+                           <Col span={12}>  <Card
+                   hoverable
+                   style={{ width: 540,marginLeft: '400px' ,marginTop: '40px'}}
+                   cover={<img alt="example" height='400px'src={data.image}/>}
+                   >
+                   <Meta title="" description="" />
+                           <h4>{data.title}</h4>
+                          <h4>price: {data.price}</h4>
+                           <h4>{data.description}</h4>
+                      <button>Add to Cart</button>
+
+                   </Card></Col>
+                           <Col span={12}>  </Col>
+                       </Row>             
+                           }
+              
+            
+            </div>
+               
     )
 }
