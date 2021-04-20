@@ -2,17 +2,23 @@ import React from 'react'
 import { Card } from 'antd';
 import { Row, Col } from 'antd';
 import {Link} from 'react-router-dom';
+import {useSelector} from 'react-redux'
 
 const { Meta } = Card;
 
 
-export default function Product(props) {
-    // console.log("data" , props.data.id)
+export default function Product() {
+    // const  data = useSelector((state) => state.Products.state)
+    const data = useSelector((daata) => daata.Products.products)
+
+
+    console.log("data in" , data)
+    
     return (
+        
         <div>
                 <Row>
-
-                    {props.data.map((data) => (
+                    { data.map((data) => (
                         // data.length === 0 ? 'loading...':
                         <Col span={6}>
                         <Link to={`/products/${data.id}`}>

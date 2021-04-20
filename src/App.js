@@ -3,10 +3,13 @@ import './App.css';
 import ProductList from './components/ProductList';
 import  ProductDetail from './components/ProductDetail'
 import {BrowserRouter, Switch, Route}  from 'react-router-dom';
+import {Provider} from 'react-redux';
+import store from './redux/store'
 
 function App() {
   return (
     <div className="App">
+      <Provider store={store}>
         <BrowserRouter>
 
            <Switch>
@@ -15,6 +18,7 @@ function App() {
            </Switch>
 
         </BrowserRouter>
+     </Provider>  
     </div>
   );
 }

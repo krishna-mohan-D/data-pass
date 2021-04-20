@@ -1,0 +1,2 @@
+const ALLPRODUCTS = 'ALLPRODUCTS';
+export default ALLPRODUCTS;
